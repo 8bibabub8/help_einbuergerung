@@ -1,0 +1,655 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="Loyalität">
+<meta name="robots" content="noindex">
+<style>:root{padding-top:env(safe-area-inset-top);padding-bottom:env(safe-area-inset-bottom)}body{margin:0}img{max-width:100%}[hidden]{display:none!important}</style>
+</head>
+<body>
+<title>Loyalitätserklärung verstehen</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=PT+Serif:ital,wght@0,400;0,700;1,400&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@500&display=swap">
+<style>
+/* Layout: ein ruhiges Lese-Dokument wie ein Amtsformular, Textmarker-Markierungen als einziges auffälliges Element; Tabs oben, Begriffe antippbar */
+:root{
+  --paper:#F8F9FB; --sheet:#FFFFFF; --ink:#18202D; --muted:#5A6476; --rule:#DCE1EA;
+  --accent:#1E4F91; --accent-soft:#E6EEF9; --ru:#3D3566; --ru-bg:#F3F1FA;
+  --easy:#24603F; --easy-bg:#EAF4EE;
+  --marker:#FFE14D; --warn:#B3261E; --warn-bg:#FCECEA;
+  --f-doc:"PT Serif", Georgia, "Times New Roman", serif;
+  --f-ui:"IBM Plex Sans", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --f-mono:"IBM Plex Mono", ui-monospace, Menlo, monospace;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --paper:#11151C; --sheet:#181D26; --ink:#E5E9F0; --muted:#9AA4B5; --rule:#2A3240;
+  --accent:#8EB4EC; --accent-soft:#1D2A3F; --ru:#C9C0F2; --ru-bg:#1F1C30;
+  --easy:#8FD3AA; --easy-bg:#16271E; --marker:#8A7410; --warn:#FF8A80; --warn-bg:#2E1A1A; color-scheme:dark}}
+:root[data-theme="dark"]{
+  --paper:#11151C; --sheet:#181D26; --ink:#E5E9F0; --muted:#9AA4B5; --rule:#2A3240;
+  --accent:#8EB4EC; --accent-soft:#1D2A3F; --ru:#C9C0F2; --ru-bg:#1F1C30;
+  --easy:#8FD3AA; --easy-bg:#16271E; --marker:#8A7410; --warn:#FF8A80; --warn-bg:#2E1A1A; color-scheme:dark}
+*{box-sizing:border-box}
+body{background:var(--paper);color:var(--ink);font-family:var(--f-ui);font-size:16px;line-height:1.55;
+  padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));padding-block:0 64px}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:10;background:var(--paper)}
+.wrap{max-width:980px;margin:0 auto}
+header.top{padding-block:28px 12px}
+.eyebrow{font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);font-weight:600}
+h1{font-family:var(--f-doc);font-size:clamp(28px,6vw,40px);line-height:1.15;margin:6px 0 4px;text-wrap:balance}
+.h1ru{font-family:var(--f-doc);font-style:italic;color:var(--ru);font-size:18px;margin:0}
+.lead{color:var(--muted);max-width:62ch;margin:12px 0 0}
+nav.tabs{position:sticky;top:env(safe-area-inset-top,0px);z-index:5;background:var(--paper);display:flex;gap:6px;overflow-x:auto;
+  padding-block:10px;border-bottom:1px solid var(--rule);scrollbar-width:none}
+nav.tabs a{flex:0 0 auto;text-decoration:none;color:var(--muted);font-weight:500;font-size:15px;padding:8px 14px;border-radius:999px;border:1px solid transparent}
+nav.tabs a small{display:block;font-size:11px;font-weight:400;color:var(--ru)}
+nav.tabs a[aria-current="page"]{background:var(--accent);color:var(--sheet)}
+nav.tabs a[aria-current="page"] small{color:var(--sheet);opacity:.85}
+nav.tabs a:focus-visible,button:focus-visible,mark.k:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+.controls{display:flex;flex-wrap:wrap;gap:8px 16px;align-items:center;padding-block:12px;font-size:14px}
+.controls label{display:flex;align-items:center;gap:6px;cursor:pointer}
+.legend{display:flex;flex-wrap:wrap;gap:8px 18px;font-size:13px;color:var(--muted);padding:12px 14px;border:1px solid var(--rule);border-radius:10px;background:var(--sheet)}
+.legend span{display:inline-flex;align-items:center;gap:6px}
+
+mark.k{background:linear-gradient(transparent 52%,var(--marker) 52%);color:inherit;cursor:pointer;padding:0 1px;border-radius:1px}
+mark.k:hover{background:var(--marker)}
+.warn{color:var(--warn);font-weight:700;text-decoration:underline;text-decoration-style:wavy;text-decoration-thickness:1px;text-underline-offset:3px}
+.tag{display:inline-block;font-size:11px;font-weight:600;letter-spacing:.05em;text-transform:uppercase;color:var(--warn);border:1px solid var(--warn);border-radius:999px;padding:1px 8px;vertical-align:middle}
+.tag.blue{color:var(--accent);border-color:var(--accent)}
+
+section.part{margin-top:28px}
+.parthead{display:flex;gap:14px;align-items:baseline;flex-wrap:wrap;border-bottom:2px solid var(--ink);padding-bottom:6px}
+.parthead .letter{font-family:var(--f-mono);font-size:14px;color:var(--accent)}
+.parthead h2{font-family:var(--f-doc);font-size:clamp(21px,4vw,26px);margin:0;line-height:1.25;text-wrap:balance}
+.parthead .ru{font-family:var(--f-doc);font-style:italic;color:var(--ru);font-size:16px;width:100%}
+.partintro{color:var(--muted);font-size:15px;max-width:68ch;margin:10px 0 0}
+
+.para{display:grid;grid-template-columns:1fr 1fr;gap:0 24px;padding-block:18px;border-bottom:1px solid var(--rule)}
+.para>*{min-width:0}
+.para .meta{grid-column:1/-1;display:flex;gap:10px;align-items:center;flex-wrap:wrap;margin-bottom:8px}
+.num{font-family:var(--f-mono);font-size:13px;color:var(--accent)}
+.para h3{font-family:var(--f-doc);font-size:18px;margin:0}
+.para h3 .ru{font-weight:400;font-style:italic;color:var(--ru);font-size:15px;margin-left:6px}
+.de{font-family:var(--f-doc);font-size:17px;line-height:1.65}
+.ru-t{font-family:var(--f-doc);font-size:16px;line-height:1.6;color:var(--ru);background:var(--ru-bg);padding:10px 14px;border-radius:8px}
+.de p,.ru-t p{margin:0 0 .6em}.de p:last-child,.ru-t p:last-child{margin-bottom:0}
+.de ul,.ru-t ul,.de ol,.ru-t ol{margin:.4em 0 0;padding-left:1.3em}
+.de li,.ru-t li{margin-bottom:.35em}
+.lab{font-size:11px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);margin-bottom:4px;display:flex;justify-content:space-between;align-items:center;gap:8px}
+.easy{grid-column:1/-1;margin-top:12px;background:var(--easy-bg);border-radius:8px;padding:10px 14px;font-size:15.5px}
+.easy .lab{color:var(--easy)}
+.easy p{margin:0 0 .4em}.easy p:last-child{margin:0}
+.tip{grid-column:1/-1;margin-top:10px;background:var(--warn-bg);border-radius:8px;padding:10px 14px;font-size:15px}
+.tip .lab{color:var(--warn)}
+.tip p{margin:0 0 .4em}.tip p:last-child{margin:0}
+body.hide-ru .ru-col{display:none} body.hide-ru .para{grid-template-columns:1fr}
+body.hide-easy .easy{display:none}
+.speak{font:500 12px var(--f-ui);color:var(--accent);background:none;border:1px solid var(--rule);border-radius:999px;padding:3px 10px;cursor:pointer;text-transform:none;letter-spacing:0}
+.speak[aria-pressed="true"]{background:var(--accent);color:var(--sheet);border-color:var(--accent)}
+
+.note{margin-top:18px;border:1px solid var(--rule);background:var(--sheet);border-radius:10px;padding:14px 16px;font-size:15px}
+.note h4{margin:0 0 6px;font-size:15px}
+.note p{margin:0 0 .5em}.note p:last-child{margin:0}
+.steps{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:10px;margin-top:12px}
+.step{border:1px solid var(--rule);border-radius:10px;padding:12px 14px;background:var(--sheet);font-size:14.5px}
+.step b{display:block;font-family:var(--f-doc);font-size:16px;margin-bottom:2px}
+.step .ru{color:var(--ru);font-size:13.5px;display:block;margin-top:4px}
+
+/* Glossar */
+.gsearch{width:100%;font:16px var(--f-ui);padding:10px 14px;border:1px solid var(--rule);border-radius:10px;background:var(--sheet);color:var(--ink);margin-top:14px}
+.glist{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:10px;margin-top:14px}
+.gitem{background:var(--sheet);border:1px solid var(--rule);border-radius:10px;padding:12px 14px;min-width:0}
+.gitem .w{font-family:var(--f-doc);font-weight:700;font-size:17px}
+.gitem .r{font-family:var(--f-doc);color:var(--ru);font-size:15.5px;margin-top:2px}
+.gitem .e{font-size:14.5px;color:var(--muted);margin-top:6px}
+.gitem.flash{outline:2px solid var(--accent)}
+
+/* Karteikarten */
+.cardbar{display:flex;flex-wrap:wrap;gap:8px;align-items:center;justify-content:space-between;margin-top:14px}
+.filter{display:flex;gap:6px;flex-wrap:wrap}
+.chip{font:500 13px var(--f-ui);padding:6px 12px;border-radius:999px;border:1px solid var(--rule);background:var(--sheet);color:var(--ink);cursor:pointer}
+.chip[aria-pressed="true"]{border-color:var(--accent);color:var(--accent);background:var(--accent-soft)}
+.count{font-family:var(--f-mono);font-size:13px;color:var(--muted);font-variant-numeric:tabular-nums}
+.fcard{margin-top:12px;background:var(--sheet);border:1px solid var(--rule);border-radius:14px;padding:20px;min-height:280px;display:flex;flex-direction:column;gap:12px}
+.fcard .q{font-family:var(--f-doc);font-size:clamp(20px,4.5vw,25px);line-height:1.3;font-weight:700;text-wrap:balance}
+.fcard .qru{font-family:var(--f-doc);font-style:italic;color:var(--ru);font-size:16px}
+.fcard .ans{border-top:1px dashed var(--rule);padding-top:12px;display:flex;flex-direction:column;gap:10px}
+.fcard .ans .de{font-size:17px}
+.fcard .hint{font-size:14.5px;background:var(--warn-bg);border-radius:8px;padding:8px 12px}
+.btnrow{display:flex;gap:8px;flex-wrap:wrap;margin-top:auto}
+.btn{font:600 15px var(--f-ui);padding:10px 16px;border-radius:10px;border:1px solid var(--rule);background:var(--sheet);color:var(--ink);cursor:pointer;flex:1 1 auto}
+.btn.primary{background:var(--accent);color:var(--sheet);border-color:var(--accent)}
+.btn.good{border-color:var(--easy);color:var(--easy)}
+.known{font-size:12px;font-weight:600;color:var(--easy)}
+.alllist{margin-top:24px}
+.alllist details{border-bottom:1px solid var(--rule);padding-block:10px}
+.alllist summary{cursor:pointer;font-family:var(--f-doc);font-weight:700;font-size:16.5px}
+.alllist summary .ru{display:block;font-weight:400;font-style:italic;color:var(--ru);font-size:14.5px}
+.alllist .a{margin-top:8px;font-family:var(--f-doc)}
+.alllist .ar{margin-top:4px;color:var(--ru);font-family:var(--f-doc);font-size:15px}
+
+/* Begriff-Fenster */
+.sheet{position:fixed;left:0;right:0;bottom:0;z-index:20;background:var(--sheet);border-top:1px solid var(--rule);box-shadow:0 -8px 30px rgba(0,0,0,.18);
+  padding:16px max(16px,env(safe-area-inset-right,0px)) calc(16px + env(safe-area-inset-bottom,0px)) max(16px,env(safe-area-inset-left,0px))}
+.sheet .in{max-width:680px;margin:0 auto;position:relative}
+.sheet .w{font-family:var(--f-doc);font-weight:700;font-size:20px;padding-right:44px}
+.sheet .r{font-family:var(--f-doc);color:var(--ru);font-size:17px;margin-top:2px}
+.sheet .e{margin-top:8px;font-size:15px}
+.sheet .x{position:absolute;top:-4px;right:0;width:36px;height:36px;border-radius:50%;border:1px solid var(--rule);background:var(--sheet);color:var(--ink);font-size:20px;cursor:pointer;line-height:1}
+.sheet .more{margin-top:10px;font-size:14px;color:var(--accent);background:none;border:none;padding:0;cursor:pointer;text-decoration:underline}
+footer{margin-top:40px;color:var(--muted);font-size:13px;max-width:70ch}
+footer a{color:var(--accent)}
+
+@media (max-width:700px){.para{grid-template-columns:1fr;gap:10px}.de{font-size:17px}}
+@media (prefers-reduced-motion:no-preference){.sheet{animation:up .18s ease-out}@keyframes up{from{transform:translateY(20px);opacity:.6}to{transform:none;opacity:1}}}
+@media print{
+  body{background:#fff;color:#000;padding:0}
+  nav.tabs,.controls,.speak,.sheet,.cardbar,.fcard,.gsearch,.btnrow{display:none!important}
+  [data-view]{display:block!important}
+  [data-view]+[data-view]{break-before:page}
+  .para{break-inside:avoid;grid-template-columns:1fr 1fr}
+  .alllist details{break-inside:avoid}
+  .alllist details>*{display:block}
+  mark.k{background:#fff3a0}
+}
+</style>
+
+<div class="wrap">
+  <header class="top">
+    <div class="eyebrow">Antrag auf Einbürgerung · Sachsen-Anhalt</div>
+    <h1>Loyalitätserklärung verstehen</h1>
+    <p class="h1ru">Понять декларацию о лояльности</p>
+    <p class="lead">Jeder Absatz steht hier auf Deutsch, auf Russisch und noch einmal in einfachem Deutsch. Markierte Wörter kann man antippen. Unter <b>Üben</b> gibt es Karteikarten mit typischen Fragen für das Gespräch.</p>
+  </header>
+
+  <nav class="tabs" aria-label="Bereiche">
+    <a href="#antrag">Antragsblatt<small>Заявление</small></a>
+    <a href="#formular">Formular Magdeburg<small>Бланк Магдебурга</small></a>
+    <a href="#woerter">Wörter<small>Словарь</small></a>
+    <a href="#ueben">Üben<small>Тренировка</small></a>
+  </nav>
+
+  <div class="controls" id="controls">
+    <label><input type="checkbox" id="opt-ru" checked> Russisch zeigen</label>
+    <label><input type="checkbox" id="opt-easy" checked> „Einfach gesagt“ zeigen</label>
+  </div>
+  <div class="legend">
+    <span><mark class="k" tabindex="-1">Begriff</mark> antippen → Übersetzung</span>
+    <span><span class="tag">Gespräch</span> wird oft gefragt</span>
+    <span><span class="warn">rot</span> besonders wichtig</span>
+  </div>
+
+  <main id="views">
+    <div data-view="antrag" id="v-antrag"></div>
+    <div data-view="formular" id="v-formular" hidden></div>
+    <div data-view="woerter" id="v-woerter" hidden>
+      <section class="part">
+        <div class="parthead"><span class="letter">Glossar</span><h2>Wichtige Wörter</h2><div class="ru">Важные слова и выражения</div></div>
+        <p class="partintro">Alle markierten Begriffe aus beiden Dokumenten. Zuerst das deutsche Wort, dann Russisch, dann eine Erklärung in einfachem Deutsch.</p>
+        <input class="gsearch" id="gsearch" type="search" placeholder="Suchen … / Поиск …" aria-label="Glossar durchsuchen">
+        <div class="glist" id="glist"></div>
+      </section>
+    </div>
+    <div data-view="ueben" id="v-ueben" hidden>
+      <section class="part">
+        <div class="parthead"><span class="letter">Training</span><h2>Fragen für das Gespräch</h2><div class="ru">Вопросы для собеседования</div></div>
+        <p class="partintro">Erst die Frage lesen und laut auf Deutsch antworten. Dann die Musterantwort aufdecken. Die Antworten sind kurz und einfach. Im Gespräch reichen zwei oder drei Sätze.</p>
+        <div class="cardbar">
+          <div class="filter" id="filter">
+            <button class="chip" data-f="all" aria-pressed="true">Alle</button>
+            <button class="chip" data-f="fdgo" aria-pressed="false">Demokratie</button>
+            <button class="chip" data-f="hist" aria-pressed="false">Geschichte</button>
+            <button class="chip" data-f="loy" aria-pressed="false">Erklärung</button>
+            <button class="chip" data-f="open" aria-pressed="false">Noch üben</button>
+          </div>
+          <span class="count" id="count"></span>
+        </div>
+        <div class="fcard" id="fcard"></div>
+        <div class="alllist">
+          <div class="parthead"><h2 style="font-size:19px">Alle Fragen als Liste</h2><div class="ru">Все вопросы списком</div></div>
+          <div id="alllist"></div>
+        </div>
+      </section>
+    </div>
+  </main>
+
+  <footer>
+    <p>Die russische Übersetzung und die Erklärungen sind eine Lernhilfe, keine amtliche Übersetzung. Unterschrieben wird immer der deutsche Text. Im Gespräch darf man nachfragen, wenn etwas unklar ist.</p>
+  </footer>
+</div>
+
+<div class="sheet" id="sheet" hidden role="dialog" aria-live="polite">
+  <div class="in">
+    <button class="x" id="sheetx" aria-label="Schließen">×</button>
+    <div class="w" id="sw"></div><div class="r" id="sr"></div><div class="e" id="se"></div>
+    <button class="more" id="smore">Im Wörterbuch zeigen</button>
+  </div>
+</div>
+
+<script>
+/* ---------- Glossar ---------- */
+const G = {
+  fdgo:["freiheitliche demokratische Grundordnung (FDGO)","свободный демократический основной порядок","Die wichtigsten Grundregeln der Demokratie in Deutschland: Wahlen, Gewaltenteilung, unabhängige Gerichte, Menschenrechte."],
+  gg:["das Grundgesetz","Основной закон (конституция Германии)","Die Verfassung von Deutschland. Sie gilt seit 1949."],
+  bekenntnis:["das Bekenntnis / sich bekennen zu","признание; открыто заявить о своей приверженности","Offen und ernst sagen: Ich stehe dahinter, ich akzeptiere das."],
+  loyal:["die Loyalitätserklärung","декларация о лояльности","Eine Erklärung mit Unterschrift: Ich bin treu zum Staat und seiner Ordnung."],
+  urkunde:["die Einbürgerungsurkunde","свидетельство о натурализации (о приёме в гражданство)","Das Dokument: Ab jetzt sind Sie deutsche Staatsbürgerin."],
+  einbuergerung:["die Einbürgerung","натурализация, приём в гражданство","Man bekommt die deutsche Staatsangehörigkeit."],
+  staatsgewalt:["die Staatsgewalt","государственная власть","Die Macht des Staates: Gesetze machen, regieren, Recht sprechen."],
+  willkuer:["die Gewalt- und Willkürherrschaft","господство насилия и произвола","Herrschaft mit Gewalt und ohne Regeln, also eine Diktatur."],
+  volk:["vom Volke ausgehen","исходить от народа","Das Volk hat die Macht. Es gibt sie durch Wahlen weiter."],
+  vertreter:["die Vertreter / die Volksvertretung","представители / народное представительство (парламент)","Gewählte Politikerinnen und Politiker im Parlament, z. B. im Bundestag."],
+  rechtsstaat:["der Rechtsstaat","правовое государство","Auch der Staat muss sich an Gesetze halten. Jeder kann vor Gericht gehen."],
+  wuerde:["die Menschenwürde","человеческое достоинство","Jeder Mensch ist wertvoll und muss respektvoll behandelt werden. Artikel 1 GG."],
+  menschenrechte:["die Menschenrechte / Grundrechte","права человека / основные права","Rechte, die jeder Mensch hat, z. B. Leben, Freiheit, Meinung, Religion."],
+  entfaltung:["die freie Entfaltung der Persönlichkeit","свободное развитие личности","Jeder darf selbst entscheiden, wie er leben will, solange er anderen nicht schadet."],
+  gleich:["gleichberechtigt / die Gleichbehandlung","равноправный / равное обращение","Alle haben die gleichen Rechte, auch Männer und Frauen."],
+  souveraen:["die Souveränität des Volkes","суверенитет народа, народовластие","Das Volk ist die höchste Macht im Staat."],
+  gewaltenteilung:["die Gewaltenteilung","разделение властей","Die Macht ist auf drei Teile verteilt: Parlament, Regierung und Gerichte."],
+  gesetzgebung:["die Gesetzgebung","законодательная власть","Das Parlament macht die Gesetze."],
+  vollziehend:["die vollziehende Gewalt (Exekutive)","исполнительная власть","Regierung und Ämter. Sie führen die Gesetze aus."],
+  rechtsprechung:["die Rechtsprechung","судебная власть, правосудие","Die Gerichte entscheiden, was nach dem Gesetz richtig ist."],
+  verantwortlich:["die Verantwortlichkeit der Regierung","ответственность правительства","Die Regierung muss dem Parlament erklären, was sie tut."],
+  abloesbar:["die Ablösbarkeit der Regierung","сменяемость правительства","Man kann eine Regierung abwählen oder ersetzen."],
+  verwaltung:["die Verwaltung / die Behörde","администрация, органы управления / ведомство","Die Ämter, z. B. Bürgeramt, Ausländerbehörde, Finanzamt."],
+  gesetzmaessig:["die Gesetzmäßigkeit der Verwaltung","законность (подзаконность) управления","Ein Amt darf nur tun, was ein Gesetz erlaubt."],
+  rechtsschutz:["der Rechtsschutz","правовая (судебная) защита","Wenn der Staat Ihre Rechte verletzt, hilft Ihnen ein Gericht."],
+  unabh:["die Unabhängigkeit der Gerichte","независимость судов","Kein Politiker darf einem Richter sagen, wie er entscheiden soll."],
+  fair:["der faire Prozess","справедливое судебное разбирательство","Jeder darf sich vor Gericht verteidigen und wird fair behandelt."],
+  mehrparteien:["das Mehrparteienprinzip","принцип многопартийности","Es gibt viele Parteien, nicht nur eine."],
+  chancen:["die Chancengleichheit","равенство шансов","Alle Parteien haben die gleichen Möglichkeiten bei Wahlen."],
+  opposition:["die Opposition","оппозиция","Die Parteien im Parlament, die nicht regieren. Sie kritisieren und kontrollieren die Regierung."],
+  gesetzentwurf:["der Gesetzentwurf","законопроект","Ein Vorschlag für ein neues Gesetz."],
+  ns:["die nationalsozialistische Unrechtsherrschaft","национал-социалистическое господство беззакония (нацистский режим)","Die Nazi-Diktatur 1933–1945 mit Holocaust und Zweitem Weltkrieg."],
+  verantwortung:["die besondere historische Verantwortung","особая историческая ответственность","Deutschland erinnert an die Verbrechen der NS-Zeit und will, dass so etwas nie wieder passiert."],
+  totalitarismus:["der Totalitarismus","тоталитаризм","Ein Staat kontrolliert alles: Politik, Medien, Privatleben. Keine Freiheit."],
+  gegenentwurf:["der Gegenentwurf","противоположная модель, антипод","Das Gegenteil, eine bewusste Alternative."],
+  antisemit:["antisemitisch / der Antisemitismus","антисемитский / антисемитизм","Feindlich gegen Jüdinnen und Juden; Hass auf Juden."],
+  kundgebung:["die Kundgebung / die Ausschreitungen","митинг, демонстрация / беспорядки","Eine öffentliche Versammlung / Gewalt und Randale auf der Straße."],
+  angriffskrieg:["der Angriffskrieg","агрессивная (захватническая) война","Ein Krieg, bei dem ein Staat einen anderen Staat angreift, ohne angegriffen worden zu sein."],
+  vereinbar:["nicht zu vereinbaren sein mit","быть несовместимым с","Passt nicht zusammen; ist nicht möglich zusammen mit."],
+  bestrebungen:["die Bestrebungen","стремления, деятельность (с определённой целью)","Aktivitäten mit einem bestimmten Ziel, allein oder in einer Gruppe oder Organisation."],
+  verfolgen:["verfolgen / unterstützen","преследовать (цель), самому заниматься / поддерживать","‚verfolgen‘ heißt hier: ein Ziel selbst aktiv anstreben (nicht ‚jemanden jagen‘). ‚unterstützen‘ heißt: helfen, z. B. mit Geld, Werbung, Mitgliedschaft."],
+  bestand:["der Bestand / die Sicherheit des Bundes","существование / безопасность Федерации","Dass Deutschland als Staat existiert und sicher ist."],
+  amtsfuehrung:["die Amtsführung / Amtsausübung","исполнение служебных обязанностей","Die Arbeit von Parlament, Regierung, Gerichten und ihren Mitgliedern."],
+  verfassungsorgane:["die Verfassungsorgane","конституционные органы","Die wichtigsten Organe des Staates: Bundestag, Bundesrat, Bundesregierung, Bundespräsident, Bundesverfassungsgericht."],
+  auswaertig:["die auswärtigen Belange","внешние (внешнеполитические) интересы","Die Beziehungen Deutschlands zu anderen Ländern."],
+  rassist:["rassistisch","расистский","Menschen wegen Herkunft oder Hautfarbe abwerten."],
+  fremdenfeind:["fremdenfeindlich","ксенофобский, враждебный к иностранцам","Feindlich gegen Ausländer und Menschen aus anderen Ländern."],
+  menschenver:["menschenverachtend","человеконенавистнический","Menschen als weniger wert behandeln, ihre Würde verletzen."],
+  wahl:["allgemein, unmittelbar, frei, gleich und geheim","всеобщие, прямые, свободные, равные и тайные (выборы)","Die fünf Wahlgrundsätze: alle dürfen wählen, direkt, ohne Zwang, jede Stimme zählt gleich, niemand sieht, was man wählt."],
+  abwenden:["sich abwenden / sich lösen von","отказаться от, отойти от","Etwas nicht mehr tun und nicht mehr unterstützen."],
+  wahrheit:["wahrheitsgemäß","правдиво, в соответствии с истиной","Ehrlich, so wie es wirklich ist. Falsche Angaben können später zum Verlust der Einbürgerung führen."]
+};
+
+/* {Text|id} -> markierter Begriff, !!Text!! -> rot */
+function mk(s){
+  return s.replace(/\{([^|}]+)\|([a-z]+)\}/g,(m,t,id)=>`<mark class="k" tabindex="0" role="button" data-g="${id}">${t}</mark>`)
+          .replace(/!!(.+?)!!/g,'<span class="warn">$1</span>');
+}
+const esc=s=>s.replace(/<[^>]+>/g,'').replace(/[{}]|\|[a-z]+|!!/g,'');
+
+/* ---------- Antragsblatt ---------- */
+const ANTRAG = [
+ {id:"I", head:["Einleitung","Вступление"], intro:"So beginnt das Blatt. Hier steht, wann und wie Sie die Erklärung abgeben.", paras:[
+  {n:"0", talk:true,
+   de:`<p><b>Spätestens vor der Aushändigung der {Einbürgerungsurkunde|urkunde} müssen Sie die unten ausgeführten {Bekenntnisse|bekenntnis} und die {Loyalitätserklärung|loyal} !!in einem persönlichen Gespräch!! abgeben.</b></p>`,
+   ru:`<p><b>Не позднее вручения свидетельства о натурализации вы должны сделать изложенные ниже заявления-признания и декларацию о лояльности в ходе личной беседы.</b></p>`,
+   easy:`<p>Bevor Sie die Urkunde bekommen, gibt es ein Gespräch im Amt. Dort sagen und unterschreiben Sie: Ich akzeptiere diese Regeln.</p>`}
+ ]},
+ {id:"a", head:["Bekenntnis zur freiheitlichen demokratischen Grundordnung","Признание свободного демократического основного порядка"], intro:"Der längste Teil. Er erklärt die Grundregeln der deutschen Demokratie in acht Punkten.", paras:[
+  {n:"a·1",
+   de:`<p>Die {freiheitliche demokratische Grundordnung|fdgo} im Sinne des {Grundgesetzes|gg} ist eine Staatsform, die keine {Gewalt- und Willkürherrschaft|willkuer} kennt. Die {Staatsgewalt|staatsgewalt} wird vom Volke über die von ihm gewählten {Vertreter|vertreter} im Parlament ausgeübt. Sie beinhaltet einen {Rechtsstaat|rechtsstaat}, der {Menschenwürde|wuerde}, Freiheit und Gleichheit jedes Einzelnen schützt.</p>`,
+   ru:`<p>Свободный демократический основной порядок в смысле Основного закона — это форма государства, в которой нет господства насилия и произвола. Государственную власть осуществляет народ через избранных им представителей в парламенте. Этот порядок включает правовое государство, которое защищает человеческое достоинство, свободу и равенство каждого человека.</p>`,
+   easy:`<p>Deutschland ist eine Demokratie. Das Volk wählt das Parlament. Niemand darf mit Gewalt oder ohne Regeln herrschen. Der Staat schützt die Würde, die Freiheit und die Gleichheit aller Menschen.</p>`},
+  {n:"a·2", talk:true, title:["Was bedeutet dies konkret?","Что это означает конкретно?"],
+   de:`<p>Die freiheitliche demokratische Grundordnung ist Grundlage für das friedliche Zusammenleben der Menschen in der Bundesrepublik Deutschland. In diesem Begriff fasst man die Wertvorstellungen des Grundgesetzes zusammen. Zu den grundlegenden Prinzipien zählen insbesondere:</p>
+   <ul><li>die Achtung der {Menschenrechte|menschenrechte}, vor allem das Recht jedes Menschen auf Leben und {freie Entfaltung|entfaltung} und {Gleichbehandlung|gleich} (hierzu zählt auch !!die Gleichberechtigung von Frau und Mann!!),</li>
+   <li>die {Souveränität des Volkes|souveraen},</li><li>die {Gewaltenteilung|gewaltenteilung},</li><li>die {Verantwortlichkeit der Regierung|verantwortlich},</li>
+   <li>die {Gesetzmäßigkeit der Verwaltung|gesetzmaessig},</li><li>die {Unabhängigkeit der Gerichte|unabh},</li>
+   <li>das {Mehrparteienprinzip|mehrparteien} und die {Chancengleichheit|chancen} für alle Parteien mit dem Recht auf verfassungsmäßige Bildung und Ausübung einer {Opposition|opposition}.</li></ul>`,
+   ru:`<p>Свободный демократический основной порядок — основа мирной совместной жизни людей в ФРГ. Этим понятием обобщают ценности Основного закона. К основополагающим принципам относятся, в частности:</p>
+   <ul><li>уважение прав человека, прежде всего права каждого на жизнь, свободное развитие личности и равное обращение (сюда относится и равноправие женщин и мужчин),</li>
+   <li>суверенитет народа,</li><li>разделение властей,</li><li>ответственность правительства,</li><li>законность действий администрации,</li><li>независимость судов,</li>
+   <li>многопартийность и равенство шансов всех партий с правом на создание и деятельность оппозиции в рамках конституции.</li></ul>`,
+   easy:`<p>Die FDGO ist die Basis für ein friedliches Zusammenleben. Diese sieben Prinzipien sind der Kern. Die Punkte 1 bis 8 unten erklären sie genauer.</p>`,
+   tip:`<p>Diese Liste ist der wichtigste Lernstoff. Eine typische Frage ist: „Was gehört zur freiheitlichen demokratischen Grundordnung?“ Drei oder vier Punkte nennen zu können, reicht meistens.</p>`},
+  {n:"1", title:["Demokratie und Volksherrschaft","Демократия и народовластие"],
+   de:`<p>Nach dem Grundgesetz !!geht alle Staatsgewalt vom Volke aus!!. Das Volk bestimmt in regelmäßigen Wahlen Vertreter im Bund, in den Ländern und in den Gemeinden. Diese nehmen die Interessen der jeweiligen Ebene, für die sie gewählt wurden, wahr und treffen die Entscheidungen nach dem Mehrheitsprinzip.</p>`,
+   ru:`<p>Согласно Основному закону, вся государственная власть исходит от народа. Народ на регулярных выборах определяет своих представителей на уровне федерации, земель и общин. Они представляют интересы того уровня, для которого были избраны, и принимают решения по принципу большинства.</p>`,
+   easy:`<p>Das Volk hat die Macht. Regelmäßig wählen die Menschen: den Bundestag (Bund), den Landtag (Land, z. B. Sachsen-Anhalt) und den Gemeinderat oder Stadtrat (Stadt). Die Mehrheit entscheidet.</p>`},
+  {n:"2", title:["Achtung der Grundrechte","Уважение основных прав"],
+   de:`<p>Die {Grundrechte|menschenrechte} ermöglichen es dem Einzelnen unter anderem, sich gegen deren Beeinträchtigung durch den Staat zu wehren. Der Staat hat die Grundrechte eines jeden Menschen zu schützen, aber auch gegen andere Menschen, Personenvereinigungen und Organisationen. Jeder Mensch hat Anspruch auf {freie Entfaltung seiner Persönlichkeit|entfaltung}. Niemand darf andere in ihrer freien Selbstbestimmung beeinträchtigen, z. B. hinsichtlich der religiösen Betätigung sowie des Zugangs zu Informationen, zur Bildung und zum Berufsleben. !!Männer und Frauen sind gleichberechtigt.!!</p>`,
+   ru:`<p>Основные права позволяют каждому, среди прочего, защищаться от их ущемления со стороны государства. Государство обязано защищать основные права каждого человека — в том числе и от других людей, объединений и организаций. Каждый имеет право на свободное развитие своей личности. Никто не вправе ограничивать других в их свободном самоопределении, например в религиозной жизни, в доступе к информации, образованию и профессии. Мужчины и женщины равноправны.</p>`,
+   easy:`<p>Jeder Mensch hat Grundrechte. Wenn der Staat sie verletzt, kann man sich wehren, z. B. vor Gericht. Der Staat schützt diese Rechte auch gegen andere Menschen. Jeder entscheidet selbst über Religion, Ausbildung und Beruf. Mann und Frau haben die gleichen Rechte.</p>`},
+  {n:"3", talk:true, title:["Gewaltenteilung","Разделение властей"],
+   de:`<p>Der Grundsatz der {Gewaltenteilung|gewaltenteilung} dient der Hemmung und Kontrolle staatlicher Macht. Die vom Volk ausgehende Staatsgewalt (siehe unter 1.) wird durch besondere Organe der {Gesetzgebung|gesetzgebung} (Parlamente), der {vollziehenden Gewalt|vollziehend} (Regierungen und Verwaltungen) und der {Rechtsprechung|rechtsprechung} (Gerichte) ausgeübt. Die Parlamente kontrollieren die Arbeit der Regierung.</p>`,
+   ru:`<p>Принцип разделения властей служит сдерживанию и контролю государственной власти. Исходящая от народа государственная власть (см. п. 1) осуществляется особыми органами законодательной власти (парламенты), исполнительной власти (правительства и администрации) и судебной власти (суды). Парламенты контролируют работу правительства.</p>`,
+   easy:`<p>Die Macht ist in drei Teile geteilt. Das Parlament macht die Gesetze. Regierung und Ämter führen die Gesetze aus. Die Gerichte sprechen Recht. So hat niemand zu viel Macht.</p>`},
+  {n:"4", title:["Rechtsstaatsprinzip","Принцип правового государства"],
+   de:`<p>Das Rechtsstaatsprinzip gewährleistet vor allem, dass Regierung und Verwaltung die Gesetze einhalten und es einen gerichtlichen {Rechtsschutz|rechtsschutz} bei Rechtsverletzungen durch die öffentliche Gewalt gibt. !!Jedem Bürger steht der Weg zu den Gerichten offen.!!</p>`,
+   ru:`<p>Принцип правового государства гарантирует прежде всего, что правительство и администрация соблюдают законы и что при нарушении прав со стороны публичной власти существует судебная защита. Каждому гражданину открыт путь в суд.</p>`,
+   easy:`<p>Auch Regierung und Ämter müssen sich an die Gesetze halten. Wenn ein Amt falsch entscheidet, kann jeder vor Gericht gehen.</p>`},
+  {n:"5", title:["Gesetzmäßigkeit der Verwaltung","Законность действий администрации"],
+   de:`<p>Die {Verwaltungen|verwaltung} müssen die Gesetze beachten und anwenden. Maßnahmen, die in Rechte des Bürgers eingreifen, bedürfen zu ihrer Rechtfertigung grundsätzlich einer gesetzlichen Grundlage, die diese Maßnahmen zulässt oder erlaubt.</p>`,
+   ru:`<p>Органы управления обязаны соблюдать и применять законы. Меры, которые затрагивают права гражданина, в принципе требуют для своего обоснования законного основания, которое допускает или разрешает такие меры.</p>`,
+   easy:`<p>Ein Amt darf nur das tun, was ein Gesetz erlaubt. Wenn ein Amt etwas gegen Sie entscheidet, braucht es dafür ein Gesetz.</p>`},
+  {n:"6", title:["Unabhängigkeit der Gerichte","Независимость судов"],
+   de:`<p>Die Gerichte sind unabhängig. Sie können von Regierungen oder Parlamenten nicht kontrolliert werden. Die Richter sind nur ihrem Gewissen bei der Rechtsanwendung verpflichtet. Jeder Bürger hat einen Anspruch auf einen {fairen Prozess|fair}.</p>`,
+   ru:`<p>Суды независимы. Правительства или парламенты не могут их контролировать. При применении права судьи подчиняются только своей совести. Каждый гражданин имеет право на справедливое судебное разбирательство.</p>`,
+   easy:`<p>Kein Politiker darf einem Richter sagen, wie er entscheiden soll. Jeder hat das Recht auf einen fairen Prozess.</p>`},
+  {n:"7", title:["Mehrparteienprinzip und Chancengleichheit der politischen Parteien","Многопартийность и равенство шансов партий"],
+   de:`<p>Ein wesentliches Merkmal der freiheitlichen demokratischen Grundordnung ist, dass es verschiedene Parteien gibt. Alle Parteien haben die gleichen Chancen, ihre politischen Vorstellungen in die Tat umzusetzen. Gründung, Bestand und Tätigkeit der Parteien sind frei von staatlichen Einflüssen und Eingriffen. Bei Wahlen haben alle Parteien die gleichen Möglichkeiten, für sich zu werben und gewählt zu werden. Durch das {Mehrparteienprinzip|mehrparteien} wird die Meinungsvielfalt im öffentlichen Leben gewährleistet.</p>`,
+   ru:`<p>Существенный признак свободного демократического основного порядка — существование различных партий. Все партии имеют равные шансы воплотить свои политические идеи в жизнь. Создание, существование и деятельность партий свободны от государственного влияния и вмешательства. На выборах все партии имеют одинаковые возможности вести агитацию и быть избранными. Многопартийность обеспечивает многообразие мнений в общественной жизни.</p>`,
+   easy:`<p>Es gibt viele Parteien, nicht nur eine. Alle haben die gleichen Chancen. Der Staat darf sich nicht einmischen. So gibt es viele verschiedene Meinungen.</p>`},
+  {n:"8", title:["Recht auf verfassungsmäßige Bildung und Ausübung einer Opposition","Право на создание и деятельность оппозиции"],
+   de:`<p>Die {Opposition|opposition} bildet das politische Gegengewicht zur Regierung und hat die Aufgabe, sie zu kontrollieren. Sie kann {Gesetzentwürfe|gesetzentwurf} einbringen. Die Regierung darf die Opposition nicht in ihrer Arbeit behindern.</p>`,
+   ru:`<p>Оппозиция является политическим противовесом правительству и имеет задачу его контролировать. Она может вносить законопроекты. Правительство не вправе препятствовать работе оппозиции.</p>`,
+   easy:`<p>Die Opposition sind die Parteien im Parlament, die nicht regieren. Sie kritisieren und kontrollieren die Regierung. Die Regierung darf sie nicht stoppen.</p>`},
+  {n:"a·3",
+   de:`<p>Für Ihre Einbürgerung ist es wichtig, dass Sie die eben beschriebenen Elemente der freiheitlichen demokratischen Grundordnung !!verstanden und akzeptiert!! haben. Bitte stellen Sie Fragen, wenn Ihnen hierzu noch etwas unklar ist.</p>`,
+   ru:`<p>Для вашей натурализации важно, чтобы вы поняли и приняли только что описанные элементы свободного демократического основного порядка. Пожалуйста, задавайте вопросы, если вам что-то ещё неясно.</p>`,
+   easy:`<p>Sie müssen diese Punkte verstehen und akzeptieren. Wenn etwas unklar ist, dürfen Sie im Gespräch fragen.</p>`,
+   tip:`<p>Nachfragen ist ausdrücklich erlaubt. Ein guter Satz dafür: „Können Sie das bitte noch einmal einfacher erklären?“</p>`}
+ ]},
+ {id:"b", head:["Bekenntnis zur besonderen historischen Verantwortung Deutschlands für die nationalsozialistische Unrechtsherrschaft","Признание особой исторической ответственности Германии за нацистский режим"], intro:"Dieser Teil ist seit der Reform des Staatsangehörigkeitsrechts 2024 neu. Er fehlt im älteren Magdeburger Formular und wird im Gespräch oft angesprochen.", isNew:true, paras:[
+  {n:"b·1", talk:true,
+   de:`<p>Das Bekenntnis zur {besonderen historischen Verantwortung|verantwortung} Deutschlands für die {nationalsozialistische Unrechtsherrschaft|ns} und ihren Folgen ist ein !!elementarer in der Bundesrepublik Deutschland geltender Grundsatz!!.</p>`,
+   ru:`<p>Признание особой исторической ответственности Германии за национал-социалистический режим беззакония и его последствия — основополагающий принцип, действующий в Федеративной Республике Германия.</p>`,
+   easy:`<p>Deutschland trägt Verantwortung für die Verbrechen der Nazi-Zeit von 1933 bis 1945, vor allem für den Holocaust (den Mord an sechs Millionen Juden) und den Zweiten Weltkrieg. Das ist ein Grundprinzip des Staates.</p>`},
+  {n:"b·2",
+   de:`<p>Das Grundgesetz der Bundesrepublik Deutschland ist als {Gegenentwurf|gegenentwurf} zu dem {Totalitarismus|totalitarismus} des nationalsozialistischen Regimes zu deuten und ist von seinem Aufbau bis in viele Details hin darauf ausgerichtet, aus den geschichtlichen Erfahrungen zu lernen und eine Wiederholung solchen Unrechts !!ein für alle Mal auszuschließen!!.</p>`,
+   ru:`<p>Основной закон ФРГ следует понимать как противоположность тоталитаризму нацистского режима. Вся его структура, вплоть до многих деталей, направлена на то, чтобы извлечь уроки из исторического опыта и раз и навсегда исключить повторение подобного беззакония.</p>`,
+   easy:`<p>Das Grundgesetz von 1949 ist die Antwort auf die Nazi-Diktatur. Es soll verhindern, dass so etwas noch einmal passiert. Deshalb steht die Menschenwürde ganz vorne in Artikel 1, und deshalb ist die Macht geteilt.</p>`},
+  {n:"b·3", talk:true,
+   de:`<p>Handlungen, die im Widerspruch zu diesem Bekenntnis stehen, insbesondere !!die terroristischen Angriffe der Hamas auf Israel am 7. Oktober 2023!!, die {antisemitischen|antisemit} und israelfeindlichen {Kundgebungen und Ausschreitungen|kundgebung} in Deutschland, aber auch !!der Angriffskrieg Russlands auf die Ukraine!!, sind mit einer Einbürgerung {nicht zu vereinbaren|vereinbar}.</p>`,
+   ru:`<p>Действия, противоречащие этому признанию, — в частности, террористические нападения ХАМАС на Израиль 7 октября 2023 года, антисемитские и враждебные Израилю митинги и беспорядки в Германии, а также агрессивная война России против Украины — несовместимы с натурализацией.</p>`,
+   easy:`<p>Wer den Terror der Hamas, Hass auf Juden oder den Angriffskrieg Russlands gegen die Ukraine unterstützt oder gutheißt, kann nicht eingebürgert werden.</p>`,
+   tip:`<p>Für russische Staatsangehörige wird die Frage nach dem Krieg gegen die Ukraine im Gespräch häufig gestellt. Es geht um die eigene, ehrliche Haltung. Die Erklärung bedeutet: Man unterstützt diesen Angriffskrieg nicht und heißt ihn nicht gut.</p><p>In Sachsen-Anhalt gilt außerdem seit 2023 ein Erlass: Bewerber sollen schriftlich das <b>Existenzrecht Israels</b> anerkennen. Dazu kann im Gespräch eine Frage kommen.</p>`}
+ ]},
+ {id:"c", head:["Loyalitätserklärung","Декларация о лояльности"], intro:"Das ist der Kern der Erklärung, die unterschrieben wird. Fünf Versprechen.", paras:[
+  {n:"c", title:["Mit der Loyalitätserklärung erklären Sie auch,","Подписывая декларацию о лояльности, вы также заявляете,"], talk:true,
+   de:`<ol><li>dass Sie keine {Bestrebungen|bestrebungen} {unterstützen oder selbst verfolgen|verfolgen}, die sich gegen die freiheitliche demokratische Grundordnung wenden,</li>
+   <li>dass sich Ihre Handlungen nicht gegen den {Bestand|bestand} der Bundesrepublik Deutschland wenden,</li>
+   <li>dass Sie die {Amtsausübung|amtsfuehrung} der gewählten Organe des Landes nicht behindern werden und</li>
+   <li>dass Sie die {auswärtigen Belange|auswaertig} der Bundesrepublik Deutschland nicht durch Ausübung von Gewalt oder durch Vorbereitung solcher Handlungen gefährden wollen.</li>
+   <li>dass Sie keine Bestrebungen unterstützen oder selbst verfolgen, die eine {antisemitische|antisemit}, {rassistische|rassist}, {fremdenfeindliche|fremdenfeind} oder sonstige {menschenverachtende|menschenver} Handlung zum Ziele haben.</li></ol>`,
+   ru:`<ol><li>что вы не поддерживаете и сами не преследуете стремлений, направленных против свободного демократического основного порядка,</li>
+   <li>что ваши действия не направлены против существования Федеративной Республики Германия,</li>
+   <li>что вы не будете препятствовать исполнению обязанностей избранными органами страны, и</li>
+   <li>что вы не намерены угрожать внешним интересам ФРГ путём применения насилия или подготовки таких действий,</li>
+   <li>что вы не поддерживаете и сами не преследуете стремлений, целью которых являются антисемитские, расистские, ксенофобские или иные человеконенавистнические действия.</li></ol>`,
+   easy:`<p><b>1.</b> Ich mache nichts gegen die Demokratie und helfe niemandem, der das tut.<br><b>2.</b> Ich arbeite nicht gegen den deutschen Staat.<br><b>3.</b> Ich störe Parlament, Regierung und Gerichte nicht bei ihrer Arbeit, z. B. durch Drohungen.<br><b>4.</b> Ich übe keine Gewalt aus, die Deutschlands Beziehungen zu anderen Ländern schadet.<br><b>5.</b> Ich unterstütze keinen Hass auf Juden, keinen Rassismus und keine Feindlichkeit gegen Ausländer.</p>`,
+   tip:`<p>„Bestrebungen <b>verfolgen</b>“ bedeutet hier: <b>selbst ein Ziel anstreben</b>, nicht „jemanden verfolgen“. „<b>Unterstützen</b>“ ist weit gemeint: Mitgliedschaft, Geld spenden, Werbung machen, Inhalte teilen.</p>`}
+ ]}
+];
+
+/* ---------- Magdeburger Formular ---------- */
+const FORM_GUIDE = `
+<section class="part">
+ <div class="parthead"><span class="letter">Überblick</span><h2>Wie das Formular aufgebaut ist</h2><div class="ru">Как устроен бланк</div></div>
+ <p class="partintro">Das Bearbeitungsblatt der Stadt Magdeburg ist von 2022. Inhaltlich deckt es sich mit Teil c) des neuen Antragsblatts, nur juristischer formuliert. Den Teil zur historischen Verantwortung enthält es noch nicht.</p>
+ <div class="steps">
+  <div class="step"><b>Nr. 1 · Angaben</b>Name, Vorname, Geburtsdatum und -ort.<span class="ru">Фамилия, имя, дата и место рождения.</span></div>
+  <div class="step"><b>Nr. 2 · Auswahl</b>Ein Kästchen ankreuzen, Datum und Unterschrift.<span class="ru">Отметить один вариант, дата и подпись.</span></div>
+  <div class="step"><b>Nr. 3 · Behörde</b>Füllt die Sachbearbeiterin oder der Sachbearbeiter aus.<span class="ru">Заполняет сотрудник ведомства.</span></div>
+  <div class="step"><b>Nr. 4 · Erklärung</b>Für alle, die nie solche Bestrebungen unterstützt haben.<span class="ru">Для тех, кто никогда не поддерживал подобного.</span></div>
+  <div class="step"><b>Nr. 5 · Erklärung</b>Nur für Personen, die sich von früheren Bestrebungen abgewandt haben.<span class="ru">Только для тех, кто отказался от прежней деятельности.</span></div>
+ </div>
+ <div class="note"><h4>Nr. 4 und Nr. 5 sind fast gleich</h4><p>Nr. 5 hat nur einen Zusatz: „Von der früheren Verfolgung oder Unterstützung derartiger Bestrebungen habe ich mich abgewandt.“ Unterschrieben wird nur eine der beiden, je nachdem, was in Nr. 2 angekreuzt wurde.</p><p class="ru-col" style="color:var(--ru);font-family:var(--f-doc)">П. 5 отличается только добавлением: «От прежнего преследования или поддержки подобных стремлений я отказался(-ась)». Подписывается только один из двух пунктов — в зависимости от отметки в п. 2.</p></div>
+</section>`;
+
+const FORM = [
+ {id:"2", head:["Nr. 2 · Bestätigung und Auswahl","П. 2 · Подтверждение и выбор"], paras:[
+  {n:"2",
+   de:`<p>Ich bestätige, dass ich über die Bedeutung des {Bekenntnisses|bekenntnis} zur {freiheitlichen demokratischen Grundordnung|fdgo} des Grundgesetzes für die Bundesrepublik Deutschland, deren Grundsätze in dem nachfolgenden Erklärungstext abgedruckt sind, unterrichtet bin. Nachdem ich von dem Inhalt der von mir erwarteten Loyalitätserklärung Kenntnis genommen habe, teile ich {wahrheitsgemäß|wahrheit} mit, dass</p>
+   <ul><li>☐ ich !!niemals!! {Bestrebungen|bestrebungen} der unter Nr. 4.2 genannten Art verfolgt oder unterstützt habe, ich werde daher die Loyalitätserklärung nach Nr. 4 abgeben (weiter mit 4.);</li>
+   <li>☐ ich in der Zeit vom … bis … Bestrebungen der unter Nr. 4.2 genannten Art verfolgt oder unterstützt habe. Hierzu mache ich folgende Angaben: …</li>
+   <li>☐ ich mich seit … von diesen Bestrebungen {gelöst|abwenden} habe, ich werde daher die Loyalitätserklärung nach Nr. 5 abgeben (weiter mit 5.).</li></ul>
+   <p>Ich habe zur Kenntnis genommen, dass meine Einbürgerung !!ausgeschlossen!! ist, wenn sich bei der Prüfung meines Antrags tatsächliche Anhaltspunkte dafür ergeben, dass ich Bestrebungen der unter Nr. 4.2 genannten Art verfolge oder unterstütze oder verfolgt oder unterstützt habe und mich nicht von derartigen Bestrebungen {abgewandt|abwenden} habe.</p>`,
+   ru:`<p>Я подтверждаю, что меня проинформировали о значении признания свободного демократического основного порядка Основного закона ФРГ, принципы которого приведены в тексте декларации ниже. Ознакомившись с содержанием ожидаемой от меня декларации о лояльности, я правдиво сообщаю, что</p>
+   <ul><li>☐ я никогда не преследовал(а) и не поддерживал(а) стремлений, указанных в п. 4.2, поэтому подпишу декларацию по п. 4 (далее п. 4);</li>
+   <li>☐ в период с … по … я преследовал(а) или поддерживал(а) стремления, указанные в п. 4.2. Сообщаю об этом следующее: …</li>
+   <li>☐ с … я отказался(-ась) от этих стремлений, поэтому подпишу декларацию по п. 5 (далее п. 5).</li></ul>
+   <p>Я принял(а) к сведению, что моя натурализация исключена, если при проверке заявления появятся фактические основания полагать, что я преследую или поддерживаю либо преследовал(а) или поддерживал(а) стремления, указанные в п. 4.2, и не отказался(-ась) от них.</p>`,
+   easy:`<p>Man bestätigt: Ich habe die Regeln erklärt bekommen. Dann kreuzt man ehrlich an. Wer nie gegen die Demokratie aktiv war und so etwas nie unterstützt hat, kreuzt das erste Kästchen an und unterschreibt danach Nr. 4.</p>`,
+   tip:`<p>Die Behörde fragt beim Verfassungsschutz nach. Falsche Angaben können dazu führen, dass die Einbürgerung später zurückgenommen wird. Deshalb gilt: Alles ehrlich angeben.</p>`}
+ ]},
+ {id:"4.1", head:["Nr. 4.1 · Bekenntnis","П. 4.1 · Признание"], paras:[
+  {n:"4",
+   de:`<p>In Kenntnis der Bedeutung für den von mir beantragten Erwerb der deutschen Staatsangehörigkeit gebe ich folgende Loyalitätserklärung ab:</p><p>Ich {bekenne mich|bekenntnis} zur freiheitlichen demokratischen Grundordnung des Grundgesetzes für die Bundesrepublik Deutschland. Insbesondere erkenne ich an:</p>`,
+   ru:`<p>Сознавая значение этого для запрошенного мной приобретения немецкого гражданства, я делаю следующую декларацию о лояльности:</p><p>Я признаю свободный демократический основной порядок Основного закона ФРГ. В частности, я признаю:</p>`,
+   easy:`<p>„Ich weiß, wie wichtig das für meine Einbürgerung ist. Ich stehe hinter der Demokratie in Deutschland. Ich akzeptiere besonders diese acht Punkte:“</p>`},
+  {n:"a", de:`<p>das Recht des Volkes, die {Staatsgewalt|staatsgewalt} in Wahlen und Abstimmungen und durch besondere Organe der {Gesetzgebung|gesetzgebung}, der {vollziehenden Gewalt|vollziehend} und der {Rechtsprechung|rechtsprechung} auszuüben und die {Volksvertretung|vertreter} in {allgemeiner, unmittelbarer, freier, gleicher und geheimer|wahl} Wahl zu wählen,</p>`,
+   ru:`<p>право народа осуществлять государственную власть на выборах и голосованиях, а также через особые органы законодательной, исполнительной и судебной власти, и избирать народное представительство на всеобщих, прямых, свободных, равных и тайных выборах,</p>`,
+   easy:`<p>Das Volk wählt und hat die Macht. Wahlen sind frei und geheim.</p>`},
+  {n:"b", de:`<p>die Bindung der Gesetzgebung an die verfassungsmäßige Ordnung und die Bindung der vollziehenden Gewalt und der Rechtsprechung an Gesetz und Recht,</p>`,
+   ru:`<p>связанность законодательства конституционным строем, а исполнительной власти и правосудия — законом и правом,</p>`,
+   easy:`<p>Neue Gesetze müssen zum Grundgesetz passen. Regierung, Ämter und Gerichte müssen sich an die Gesetze halten.</p>`},
+  {n:"c", de:`<p>das Recht auf Bildung und Ausübung einer parlamentarischen {Opposition|opposition},</p>`,
+   ru:`<p>право на создание и деятельность парламентской оппозиции,</p>`,
+   easy:`<p>Es darf eine Opposition im Parlament geben.</p>`},
+  {n:"d", de:`<p>die {Ablösbarkeit der Regierung|abloesbar} und ihre {Verantwortlichkeit|verantwortlich} gegenüber der Volksvertretung,</p>`,
+   ru:`<p>сменяемость правительства и его ответственность перед народным представительством,</p>`,
+   easy:`<p>Die Regierung kann abgewählt werden und muss dem Parlament Rechenschaft geben.</p>`},
+  {n:"e", de:`<p>die {Unabhängigkeit der Gerichte|unabh},</p>`, ru:`<p>независимость судов,</p>`, easy:`<p>Gerichte entscheiden frei, ohne Befehle von Politikern.</p>`},
+  {n:"f", de:`<p>den Ausschluss jeder {Gewalt- und Willkürherrschaft|willkuer},</p>`, ru:`<p>исключение любого господства насилия и произвола,</p>`, easy:`<p>Keine Diktatur.</p>`},
+  {n:"g", de:`<p>die im Grundgesetz konkretisierten {Menschenrechte|menschenrechte},</p>`, ru:`<p>права человека, конкретизированные в Основном законе,</p>`, easy:`<p>Die Grundrechte aus dem Grundgesetz, z. B. Meinungsfreiheit und Religionsfreiheit.</p>`},
+  {n:"h", talk:true, de:`<p>dass eine Handlung, die {antisemitisch|antisemit}, {rassistisch|rassist}, {fremdenfeindliche|fremdenfeind} oder sonstige {menschenverachtende|menschenver} Ziele verfolgt, !!mit der vom Grundgesetz garantierten Würde und Gleichheit aller Menschen unvereinbar ist!! und dem Bekenntnis entgegensteht.</p>`,
+   ru:`<p>что действие, преследующее антисемитские, расистские, ксенофобские или иные человеконенавистнические цели, несовместимо с гарантированными Основным законом достоинством и равенством всех людей и противоречит этому признанию.</p>`,
+   easy:`<p>Hass auf Juden, Rassismus und Hass auf Ausländer passen nicht zur Würde aller Menschen. Wer so handelt, hält sich nicht an diese Erklärung.</p>`}
+ ]},
+ {id:"4.2", head:["Nr. 4.2 · Keine verfassungsfeindlichen Bestrebungen","П. 4.2 · Отсутствие антиконституционной деятельности"], paras:[
+  {n:"4.2",
+   de:`<p>Ich erkläre, dass ich keine {Bestrebungen|bestrebungen} {verfolge oder unterstütze|verfolgen} oder verfolgt oder unterstützt habe, die</p>
+   <ol type="a"><li>gegen die freiheitliche demokratische Grundordnung, den {Bestand oder die Sicherheit des Bundes|bestand} oder eines Landes gerichtet sind oder</li>
+   <li>eine ungesetzliche Beeinträchtigung der {Amtsführung|amtsfuehrung} der {Verfassungsorgane|verfassungsorgane} des Bundes oder eines Landes oder ihrer Mitglieder zum Ziele haben oder</li>
+   <li>durch Anwendung von Gewalt oder darauf gerichtete Vorbereitungshandlungen {auswärtige Belange|auswaertig} der Bundesrepublik Deutschland gefährden oder</li>
+   <li>eine antisemitische, rassistische, fremdenfeindliche oder sonstige menschenverachtende Handlung zum Ziel haben.</li></ol>`,
+   ru:`<p>Я заявляю, что не преследую и не поддерживаю, а также не преследовал(а) и не поддерживал(а) стремлений, которые</p>
+   <ol type="a"><li>направлены против свободного демократического основного порядка, существования или безопасности Федерации либо одной из земель, или</li>
+   <li>имеют целью незаконное воспрепятствование работе конституционных органов Федерации или земли либо их членов, или</li>
+   <li>путём применения насилия или подготовки к нему угрожают внешним интересам ФРГ, или</li>
+   <li>имеют целью антисемитские, расистские, ксенофобские или иные человеконенавистнические действия.</li></ol>`,
+   easy:`<p>Das sind dieselben Punkte wie im neuen Antragsblatt, Teil c). Kurz: Ich war und bin nicht gegen die Demokratie aktiv, nicht gegen den Staat, nicht gewalttätig und nicht menschenverachtend.</p>`}
+ ]}
+];
+
+/* ---------- Fragen ---------- */
+const Q = [
+ {c:"fdgo",q:"Was bedeutet „freiheitliche demokratische Grundordnung“?",qr:"Что означает «свободный демократический основной порядок»?",
+  a:"Das sind die Grundregeln der Demokratie in Deutschland. Das Volk wählt das Parlament, die Macht ist geteilt, die Gerichte sind unabhängig und die Menschenrechte gelten für alle.",
+  ar:"Это основные правила демократии в Германии: народ выбирает парламент, власть разделена, суды независимы, права человека действуют для всех."},
+ {c:"fdgo",q:"Nennen Sie einige Prinzipien der freiheitlichen demokratischen Grundordnung.",qr:"Назовите несколько принципов основного порядка.",
+  a:"Zum Beispiel: Menschenrechte, Volkssouveränität, Gewaltenteilung, unabhängige Gerichte und mehrere Parteien mit einer Opposition.",
+  ar:"Например: права человека, народовластие, разделение властей, независимые суды, многопартийность и оппозиция."},
+ {c:"fdgo",q:"Was bedeutet „Alle Staatsgewalt geht vom Volke aus“?",qr:"Что значит «вся государственная власть исходит от народа»?",
+  a:"Das Volk hat die Macht. Es wählt regelmäßig Vertreter für den Bund, das Land und die Gemeinde. Die Mehrheit entscheidet.",
+  ar:"Власть принадлежит народу. Он регулярно выбирает представителей на уровне федерации, земли и общины. Решает большинство."},
+ {c:"fdgo",q:"Was ist Gewaltenteilung?",qr:"Что такое разделение властей?",
+  a:"Die Macht ist auf drei Teile verteilt: Das Parlament macht Gesetze, die Regierung und die Ämter führen sie aus, die Gerichte sprechen Recht. So hat niemand zu viel Macht.",
+  ar:"Власть разделена на три части: парламент принимает законы, правительство и ведомства их исполняют, суды вершат правосудие. Так ни у кого нет слишком много власти."},
+ {c:"fdgo",q:"Wer kontrolliert die Regierung?",qr:"Кто контролирует правительство?",
+  a:"Das Parlament, vor allem die Opposition. Auch die Gerichte und die freie Presse kontrollieren die Regierung.",
+  ar:"Парламент, прежде всего оппозиция. Также суды и свободная пресса."},
+ {c:"fdgo",q:"Was macht die Opposition?",qr:"Чем занимается оппозиция?",
+  a:"Die Opposition sind die Parteien im Parlament, die nicht regieren. Sie kritisiert und kontrolliert die Regierung und kann eigene Gesetze vorschlagen.",
+  ar:"Оппозиция — это партии в парламенте, которые не входят в правительство. Она критикует и контролирует правительство и может предлагать законы."},
+ {c:"fdgo",q:"Was bedeutet „unabhängige Gerichte“?",qr:"Что значит «независимые суды»?",
+  a:"Kein Politiker und keine Regierung darf einem Richter sagen, wie er entscheiden soll. Jeder hat das Recht auf einen fairen Prozess.",
+  ar:"Ни политик, ни правительство не могут указывать судье, как решать. У каждого есть право на справедливый суд."},
+ {c:"fdgo",q:"Was bedeutet Rechtsstaat?",qr:"Что такое правовое государство?",
+  a:"Auch der Staat muss sich an die Gesetze halten. Wenn ein Amt falsch entscheidet, kann man vor Gericht gehen.",
+  ar:"Государство тоже обязано соблюдать законы. Если ведомство приняло неверное решение, можно обратиться в суд."},
+ {c:"fdgo",q:"Was können Sie tun, wenn ein Amt gegen Sie entscheidet?",qr:"Что вы можете сделать, если ведомство приняло решение против вас?",
+  a:"Ich kann Widerspruch einlegen. Wenn das nicht hilft, kann ich vor Gericht klagen.",
+  ar:"Я могу подать возражение (Widerspruch). Если это не поможет, могу подать иск в суд."},
+ {c:"fdgo",q:"Haben Männer und Frauen in Deutschland die gleichen Rechte?",qr:"Есть ли у мужчин и женщин в Германии равные права?",
+  a:"Ja. Männer und Frauen sind gleichberechtigt. Das steht im Grundgesetz. Frauen entscheiden selbst über Ausbildung, Beruf und ihr Leben.",
+  ar:"Да. Мужчины и женщины равноправны, это записано в Основном законе. Женщины сами решают об образовании, профессии и своей жизни."},
+ {c:"fdgo",q:"Darf man in Deutschland seine Religion frei wählen?",qr:"Можно ли в Германии свободно выбирать религию?",
+  a:"Ja. Es gibt Religionsfreiheit. Jeder darf eine Religion haben, sie wechseln oder keine Religion haben. Niemand darf einen anderen zwingen.",
+  ar:"Да, есть свобода вероисповедания. Каждый может иметь религию, сменить её или не иметь никакой. Никто не может принуждать другого."},
+ {c:"fdgo",q:"Was steht in Artikel 1 des Grundgesetzes?",qr:"Что написано в статье 1 Основного закона?",
+  a:"„Die Würde des Menschen ist unantastbar.“ Der Staat muss die Würde jedes Menschen achten und schützen.",
+  ar:"«Достоинство человека неприкосновенно». Государство обязано уважать и защищать достоинство каждого человека."},
+ {c:"fdgo",q:"Warum gibt es in Deutschland mehrere Parteien?",qr:"Почему в Германии несколько партий?",
+  a:"Damit es verschiedene Meinungen gibt und die Menschen bei Wahlen wirklich wählen können. In einer Diktatur gibt es oft nur eine Partei.",
+  ar:"Чтобы существовали разные мнения и люди на выборах действительно имели выбор. При диктатуре часто есть только одна партия."},
+ {c:"hist",q:"Warum hat Deutschland eine besondere historische Verantwortung?",qr:"Почему у Германии особая историческая ответственность?",
+  a:"Wegen der Verbrechen der Nazi-Zeit von 1933 bis 1945. Damals wurden sechs Millionen Juden und viele andere Menschen ermordet. Deutschland erinnert daran, damit so etwas nie wieder passiert.",
+  ar:"Из-за преступлений нацистского времени 1933–1945 годов. Тогда были убиты шесть миллионов евреев и многие другие люди. Германия помнит об этом, чтобы это никогда не повторилось."},
+ {c:"hist",q:"Was hat das Grundgesetz mit der NS-Zeit zu tun?",qr:"Как Основной закон связан с нацистским временем?",
+  a:"Das Grundgesetz ist die Antwort auf die Nazi-Diktatur. Deshalb steht die Menschenwürde in Artikel 1, die Macht ist geteilt und die Gerichte sind unabhängig.",
+  ar:"Основной закон — ответ на нацистскую диктатуру. Поэтому достоинство человека стоит в статье 1, власть разделена, а суды независимы."},
+ {c:"hist",q:"Was bedeutet Antisemitismus?",qr:"Что такое антисемитизм?",
+  a:"Antisemitismus ist Hass oder Feindlichkeit gegen Jüdinnen und Juden. Das passt nicht zum Grundgesetz und schließt eine Einbürgerung aus.",
+  ar:"Антисемитизм — это ненависть или враждебность к евреям. Это несовместимо с Основным законом и исключает натурализацию."},
+ {c:"hist",q:"Erkennen Sie das Existenzrecht Israels an?",qr:"Признаёте ли вы право Израиля на существование?",
+  a:"Diese Frage kann in Sachsen-Anhalt gestellt werden, weil ein Erlass von 2023 das schriftliche Bekenntnis verlangt. Hilfreiche Wörter: das Existenzrecht, anerkennen, in Frieden leben.",
+  ar:"В Саксонии-Анхальт этот вопрос могут задать: по распоряжению 2023 года требуется письменное признание. Полезные слова: das Existenzrecht (право на существование), anerkennen (признавать).",personal:true},
+ {c:"hist",q:"Wie stehen Sie zum Krieg Russlands gegen die Ukraine?",qr:"Как вы относитесь к войне России против Украины?",
+  a:"Antworten Sie ehrlich und in eigenen Worten. Das Antragsblatt nennt den Angriffskrieg ausdrücklich als „mit einer Einbürgerung nicht zu vereinbaren“. Hilfreiche Wörter: der Angriffskrieg, ablehnen, das Völkerrecht, der Frieden.",
+  ar:"Отвечайте честно и своими словами. В заявлении агрессивная война прямо названа несовместимой с натурализацией. Полезные слова: der Angriffskrieg (агрессивная война), ablehnen (отвергать), das Völkerrecht (международное право), der Frieden (мир).",personal:true},
+ {c:"loy",q:"Was bedeutet es, dass Sie keine „Bestrebungen“ gegen die Demokratie unterstützen?",qr:"Что значит, что вы не поддерживаете «стремлений» против демократии?",
+  a:"Ich bin in keiner Gruppe oder Organisation, die gegen die Demokratie ist. Ich gebe so einer Gruppe kein Geld, ich helfe ihr nicht und ich mache keine Werbung für sie.",
+  ar:"Я не состою ни в какой группе или организации, выступающей против демократии. Я не даю ей денег, не помогаю ей и не занимаюсь её пропагандой."},
+ {c:"loy",q:"Was bedeutet „menschenverachtend“?",qr:"Что значит «человеконенавистнический»?",
+  a:"Wenn man Menschen als weniger wert behandelt, zum Beispiel wegen ihrer Herkunft, Religion oder Hautfarbe. Das verletzt die Würde des Menschen.",
+  ar:"Когда к людям относятся как к менее ценным, например из-за происхождения, религии или цвета кожи. Это нарушает человеческое достоинство."},
+ {c:"loy",q:"Warum müssen Sie die Loyalitätserklärung unterschreiben?",qr:"Почему вы должны подписать декларацию о лояльности?",
+  a:"Weil Deutsche die Demokratie und das Grundgesetz akzeptieren sollen. Mit der Unterschrift verspreche ich, dass ich nichts gegen diese Ordnung tue.",
+  ar:"Потому что граждане Германии должны принимать демократию и Основной закон. Подписью я обещаю, что не буду ничего делать против этого порядка."},
+ {c:"loy",q:"Warum möchten Sie Deutsche werden?",qr:"Почему вы хотите стать гражданкой Германии?",
+  a:"Persönliche Frage. Antworten Sie in zwei oder drei ehrlichen Sätzen, z. B. über Familie, Arbeit, das Leben hier oder das Recht zu wählen.",
+  ar:"Личный вопрос. Ответьте честно в двух-трёх предложениях: например, о семье, работе, жизни здесь или праве голосовать.",personal:true}
+];
+
+/* ---------- Rendering ---------- */
+function renderParts(parts){
+  return parts.map(p=>`
+  <section class="part">
+    <div class="parthead">${/^[a-c]$/.test(p.id)?`<span class="letter">${p.id})</span>`:''}<h2>${p.head[0]}</h2>${p.isNew?'<span class="tag blue">neu seit 2024</span>':''}<div class="ru">${p.head[1]}</div></div>
+    ${p.intro?`<p class="partintro">${p.intro}</p>`:''}
+    ${p.paras.map(x=>`
+    <article class="para">
+      <div class="meta"><span class="num">${x.n}</span>${x.title?`<h3>${mk(x.title[0])}<span class="ru">${x.title[1]}</span></h3>`:''}${x.talk?'<span class="tag">Gespräch</span>':''}</div>
+      <div class="de"><div class="lab">Deutsch <button class="speak" data-say aria-pressed="false">▶ Anhören</button></div>${mk(x.de)}</div>
+      <div class="ru-t ru-col"><div class="lab" style="color:var(--ru)">Русский</div>${x.ru}</div>
+      ${x.easy?`<div class="easy"><div class="lab">Einfach gesagt <button class="speak" data-say aria-pressed="false">▶ Anhören</button></div>${x.easy}</div>`:''}
+      ${x.tip?`<div class="tip"><div class="lab">Fürs Gespräch</div>${x.tip}</div>`:''}
+    </article>`).join('')}
+  </section>`).join('');
+}
+document.getElementById('v-antrag').innerHTML = renderParts(ANTRAG);
+document.getElementById('v-formular').innerHTML = FORM_GUIDE + renderParts(FORM);
+
+/* Glossar */
+const glist=document.getElementById('glist');
+const gkeys=Object.keys(G).sort((a,b)=>G[a][0].replace(/^(der|die|das) /,'').localeCompare(G[b][0].replace(/^(der|die|das) /,''),'de'));
+glist.innerHTML=gkeys.map(k=>`<div class="gitem" id="g-${k}"><div class="w">${G[k][0]}</div><div class="r">${G[k][1]}</div><div class="e">${G[k][2]}</div></div>`).join('');
+document.getElementById('gsearch').addEventListener('input',e=>{
+  const v=e.target.value.toLowerCase().trim();
+  gkeys.forEach(k=>{document.getElementById('g-'+k).hidden = v && !G[k].join(' ').toLowerCase().includes(v)});
+});
+
+/* Begriff-Fenster */
+const sheet=document.getElementById('sheet');let curG=null;
+function openTerm(id){const g=G[id];if(!g)return;curG=id;
+  document.getElementById('sw').textContent=g[0];document.getElementById('sr').textContent=g[1];document.getElementById('se').textContent=g[2];sheet.hidden=false;}
+document.addEventListener('click',e=>{
+  const m=e.target.closest('mark.k[data-g]');
+  if(m){openTerm(m.dataset.g);return}
+  if(!e.target.closest('#sheet'))sheet.hidden=true;
+});
+document.addEventListener('keydown',e=>{
+  if((e.key==='Enter'||e.key===' ')&&e.target.matches('mark.k[data-g]')){e.preventDefault();openTerm(e.target.dataset.g)}
+  if(e.key==='Escape')sheet.hidden=true;
+});
+document.getElementById('sheetx').onclick=()=>sheet.hidden=true;
+document.getElementById('smore').onclick=()=>{sheet.hidden=true;location.hash='woerter';
+  setTimeout(()=>{const el=document.getElementById('g-'+curG);if(el){el.scrollIntoView({block:'center'});el.classList.add('flash');setTimeout(()=>el.classList.remove('flash'),1600)}},60)};
+
+/* Vorlesen */
+let speakingBtn=null,voices=[];
+function loadVoices(){try{voices=speechSynthesis.getVoices()}catch(e){}}
+try{loadVoices();speechSynthesis.onvoiceschanged=loadVoices}catch(e){}
+function deVoice(){if(!voices.length)loadVoices();
+  return voices.find(v=>v.lang==='de-DE'&&/Anna|Helena|Petra|Markus|Yannick/i.test(v.name))||voices.find(v=>v.lang&&v.lang.replace('_','-').startsWith('de'));}
+function say(text,btn){
+  try{
+    const s=window.speechSynthesis; if(!s){btn.textContent='Nicht verfügbar';return}
+    if(speakingBtn===btn){s.cancel();reset();return}
+    if(s.speaking||s.pending)s.cancel(); reset();
+    const u=new SpeechSynthesisUtterance(text);u.lang='de-DE';u.rate=.88;
+    const v=deVoice();if(v)u.voice=v;
+    u.onend=u.onerror=reset; speakingBtn=btn; btn.setAttribute('aria-pressed','true'); btn.textContent='■ Stopp';
+    s.speak(u);
+  }catch(err){btn.textContent='Nicht verfügbar'}
+}
+function reset(){if(speakingBtn){speakingBtn.setAttribute('aria-pressed','false');speakingBtn.textContent='▶ Anhören'}speakingBtn=null}
+document.addEventListener('click',e=>{
+  const b=e.target.closest('[data-say]');if(!b)return;
+  const box=b.closest('.de,.easy,.fcard'); let t;
+  if(b.dataset.text) t=b.dataset.text;
+  else {const c=box.cloneNode(true);c.querySelectorAll('.lab').forEach(n=>n.remove());t=c.textContent.replace(/☐/g,'').replace(/\s+/g,' ').trim();}
+  say(t,b);
+});
+
+/* Optionen */
+const store={get(k){try{return localStorage.getItem(k)}catch(e){return null}},set(k,v){try{localStorage.setItem(k,v)}catch(e){}}};
+const oRu=document.getElementById('opt-ru'),oEa=document.getElementById('opt-easy');
+if(store.get('hideRu')==='1')oRu.checked=false; if(store.get('hideEasy')==='1')oEa.checked=false;
+function applyOpts(){document.body.classList.toggle('hide-ru',!oRu.checked);document.body.classList.toggle('hide-easy',!oEa.checked);
+  store.set('hideRu',oRu.checked?'0':'1');store.set('hideEasy',oEa.checked?'0':'1');}
+oRu.onchange=oEa.onchange=applyOpts;applyOpts();
+
+/* Karteikarten */
+let known={};try{known=JSON.parse(store.get('known')||'{}')}catch(e){}
+let filt='all',idx=0,shown=false;
+const list=()=>Q.map((q,i)=>({...q,i})).filter(q=>filt==='all'?true:filt==='open'?!known[q.i]:q.c===filt);
+const catName={fdgo:'Demokratie',hist:'Geschichte',loy:'Erklärung'};
+function drawCard(){
+  const L=list(),box=document.getElementById('fcard');
+  document.getElementById('count').textContent=L.length?`${Math.min(idx+1,L.length)} / ${L.length} · gelernt ${Object.keys(known).filter(k=>known[k]).length}/${Q.length}`:'';
+  if(!L.length){box.innerHTML=`<div class="q">Alles gelernt.</div><div class="qru">Всё выучено. Выберите «Alle», чтобы повторить.</div>`;return}
+  if(idx>=L.length)idx=0; const q=L[idx];
+  box.innerHTML=`
+    <div class="lab"><span>${catName[q.c]}${known[q.i]?' · <span class="known">gelernt</span>':''}</span><button class="speak" data-say data-text="${q.q.replace(/"/g,'&quot;')}" aria-pressed="false">▶ Anhören</button></div>
+    <div class="q">${q.q}</div><div class="qru ru-col">${q.qr}</div>
+    ${shown?`<div class="ans">
+      ${q.personal?`<div class="hint">${q.a}</div><div class="qru ru-col">${q.ar}</div>`:
+      `<div class="de"><div class="lab">Musterantwort <button class="speak" data-say data-text="${q.a.replace(/"/g,'&quot;')}" aria-pressed="false">▶ Anhören</button></div>${q.a}</div><div class="qru ru-col">${q.ar}</div>`}
+    </div>`:''}
+    <div class="btnrow">
+      <button class="btn" id="prev">← Zurück</button>
+      ${shown?`<button class="btn good" id="knew">${known[q.i]?'Wieder üben':'Kann ich ✓'}</button>`:`<button class="btn primary" id="show">Antwort zeigen</button>`}
+      <button class="btn" id="next">Weiter →</button>
+    </div>`;
+  const L2=L.length;
+  box.querySelector('#prev').onclick=()=>{idx=(idx-1+L2)%L2;shown=false;drawCard()};
+  box.querySelector('#next').onclick=()=>{idx=(idx+1)%L2;shown=false;drawCard()};
+  const s=box.querySelector('#show');if(s)s.onclick=()=>{shown=true;drawCard()};
+  const k=box.querySelector('#knew');if(k)k.onclick=()=>{known[q.i]=!known[q.i];store.set('known',JSON.stringify(known));
+    shown=false; if(filt!=='open')idx=(idx+1)%L2; drawCard()};
+}
+document.getElementById('filter').addEventListener('click',e=>{const b=e.target.closest('.chip');if(!b)return;
+  filt=b.dataset.f;idx=0;shown=false;document.querySelectorAll('#filter .chip').forEach(c=>c.setAttribute('aria-pressed',c===b));drawCard()});
+drawCard();
+document.getElementById('alllist').innerHTML=Q.map(q=>`<details><summary>${q.q}<span class="ru">${q.qr}</span></summary><div class="a">${q.a}</div><div class="ar">${q.ar}</div></details>`).join('');
+
+/* Navigation */
+const views=['antrag','formular','woerter','ueben'];
+function route(){const h=(location.hash||'#antrag').slice(1);const v=views.includes(h)?h:'antrag';
+  document.querySelectorAll('[data-view]').forEach(d=>d.hidden=d.dataset.view!==v);
+  document.querySelectorAll('nav.tabs a').forEach(a=>a.setAttribute('aria-current',a.getAttribute('href')==='#'+v?'page':'false'));
+  document.getElementById('controls').hidden = v==='woerter';
+  try{window.speechSynthesis&&speechSynthesis.cancel()}catch(e){} reset();}
+window.addEventListener('hashchange',()=>{route();window.scrollTo(0,0)});route();
+</script>
+
+</body>
+</html>
